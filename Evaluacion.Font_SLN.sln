@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluacion.Font", "Evaluacion.Font\Evaluacion.Font.csproj", "{69CD6831-D904-4052-AD1C-43903D67052C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluacion.Back", "Evaluacion.Back\Evaluacion.Back.csproj", "{6514CC0E-8B3F-4422-9D4D-09E1B3361826}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69CD6831-D904-4052-AD1C-43903D67052C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69CD6831-D904-4052-AD1C-43903D67052C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69CD6831-D904-4052-AD1C-43903D67052C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69CD6831-D904-4052-AD1C-43903D67052C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6514CC0E-8B3F-4422-9D4D-09E1B3361826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6514CC0E-8B3F-4422-9D4D-09E1B3361826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6514CC0E-8B3F-4422-9D4D-09E1B3361826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6514CC0E-8B3F-4422-9D4D-09E1B3361826}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E4AC2FD-971C-4F54-8F3A-210624681F99}
+	EndGlobalSection
+EndGlobal
