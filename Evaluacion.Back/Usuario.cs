@@ -10,8 +10,18 @@ namespace Evaluacion.Back
     {
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-
         public string Clave { get; set; }
+        public int Codigo { get; set; }
+
+       
+
+        public string Listar()
+        {
+            string respuesta = Nombre + " - " + Apellido + " - " + Clave + " - " + Codigo;
+
+            return respuesta;
+
+        }
 
     }
 }

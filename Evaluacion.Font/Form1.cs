@@ -12,87 +12,168 @@ using Evaluacion.Back;
 
 namespace Evaluacion.Font
 {
-    public partial class Form1 : Form
+    public partial class FmCearUsuario : Form
     {
-        public Form1()
+        int cod = 0;
+        ListaUsuarios Listita = new ListaUsuarios();
+        public FmCearUsuario()
         {
             InitializeComponent();
         }
-        
-        private void BtCrearUsuario_Click(object sender, EventArgs e)
-        {           
-            GrpCrearUsuario.Visible = false;
-            GrpBtIngresar.Visible = false;
-            GrpCreacion.Visible = true;
-
-            GrpCreacion.Top = GrpCrearUsuario.Top;
-            GrpCreacion.Left = GrpCrearUsuario.Left;
-
-
-        }
-
-        
+       
         public void BtCrear_Click(object sender, EventArgs e)
-        {
-            Usuario usuario = new Usuario();
-            string Error = "";
-            
-            if (TxtNombC==null)
+        {                       
+            if (Validacion()==false )
             {
-                Error = 1;
-            }
-            if (TxtApllC == null)
-            {
-                Error = true;
-            }
-            if (TxtClaveC != TxtClaveRep)
-            {
-                Error = true;
-            }
+                errorProvider1.Clear();
+                MessageBox.Show("datos cargados correctamente","Validaciones", MessageBoxButtons.OK, MessageBoxIcon.Information) ;
+                Usuario usuario = new Usuario();
+                
 
-            switch ()
-            {
-                case TxtClaveC.Text:
-                    errorProvider2.SetError(TxtNombC, "Campo incompleto");                  
-                    GrpCreacion.Width = 220;
-                    break;
-                case false:
-                    errorProvider3.SetError(TxtApllC, "Campo incompleto");
-                    GrpCreacion.Width = 220;
-                    break;
-                case TxtClaveC.Text != TxtClaveRep:Text:
-                    errorProvider1.SetError(TxtClaveC, "La contraseña debe ser la misma en ambos campos");
-                    GrpCreacion.Width = 220;
-                    break;
-                    
-                default:
-                    Error = false;
-                    break; 
+                usuario.Nombre = TxtNombC.Text.ToLower();
+                usuario.Apellido = TxtApllC.Text.ToLower();
+                usuario.Clave = TxtClaveC.Text;
+                usuario.Codigo = cod;
+                cod++;
+                TxtNombC.Clear();
+                TxtApllC.Clear();
+                TxtClaveC.Clear();
+                TxtClaveRep.Clear();
+                Listita.AgregarUsuario(usuario);
+                label1.Text = Listita.Listar();
             }
+            else
+            {
+                
+                MessageBox.Show("Ha ocurrido un error. Posicione el cursor encima del icono de advertencia",
+                "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        public bool Validacion()
         {
-            GrpCrearUsuario.Visible = false;
-            GrpBtIngresar.Visible = false;
+            bool Error = false;
+
+            if (String.IsNullOrEmpty(TxtNombC.Text))
+            {
+                errorProvider1.SetError(TxtNombC, "El campo no puede ser vacio");
+                Error = true;
+                GrpCreacion.Width = 230;
+            }
+
+            else if (string.IsNullOrEmpty(TxtApllC.Text))
+            {      
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(TxtApllC, "campo vacio");
+                    Error = true;
+                GrpCreacion.Width = 230;
+
+            }
+
+            else if (string.IsNullOrEmpty(TxtClaveC.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(TxtClaveC, "campo vacio");
+                Error = true;
+                GrpCreacion.Width = 230;
+
+            }
+            else if (TxtClaveC.Text!=TxtClaveRep.Text)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(TxtClaveC, "campo vacio");
+                Error = true;
+                GrpCreacion.Width = 230;
+
+            }
+            
+
+            return Error;
+        }
+
+        private void BtIngresar_Click(object sender, EventArgs e)
+        {
+            if (Validacion2()==false)
+            {
+                if (Listita.Listar().Contains(TxtClave.Text))
+                {
+                    this.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error. Posicione el cursor encima del icono de advertencia",
+                "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public bool Validacion2()
+        {
+            bool EnableBoton = false;
+            bool Error2 = false;
+
+            if (String.IsNullOrEmpty(TxtNomb.Text))
+            {
+                errorProvider1.SetError(TxtNomb, "El campo no puede ser vacio");
+                Error2 = true;
+                GrpIngresar.Width = 230;
+            }
+            else if (string.IsNullOrEmpty(TxtApll.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(TxtApll, "campo vacio");
+                Error2 = true;
+                GrpIngresar.Width = 230;
+
+            }
+            else if (string.IsNullOrEmpty(TxtClave.Text))
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(TxtClave, "campo vacio");
+                Error2 = true;
+                GrpIngresar.Width = 230;
+                
+            }
+            else if(Listita.Listar().Contains(TxtClave.Text))
+            {
+                EnableBoton = true;
+            }
+
+           
+            return Error2;  
+        }
+
+        private void BtCrear10_Click(object sender, EventArgs e)
+        {
+            GrpCrear10.Visible = false;
+            GrpIngresar10.Visible = false;
+            GrpCreacion.Visible = true;
+            GrpCreacion.Top = GrpCrear10.Top;
+            GrpCreacion.Left = GrpCrear10.Left;
+        }
+
+        private void BtIngresar10_Click(object sender, EventArgs e)
+        {
+            GrpCrear10.Visible = false;
+            GrpIngresar10.Visible = false;
             GrpIngresar.Visible = true;
-
-            GrpIngresar.Top = GrpBtIngresar.Top;
-            GrpIngresar.Left = GrpBtIngresar.Left;
-
+            GrpIngresar.Top = GrpIngresar10.Top;
+            GrpIngresar.Left = GrpIngresar10.Left;
         }
 
         private void BtRegresarCrear_Click(object sender, EventArgs e)
         {
-            GrpCrearUsuario.Visible = true;
-            GrpBtIngresar.Visible = true;
+            GrpCrear10.Visible = true;
+            GrpIngresar10.Visible = true;
             GrpCreacion.Visible = false;
+
         }
 
         private void BtRegresarIngresar_Click(object sender, EventArgs e)
         {
-            GrpCrearUsuario.Visible = true;
-            GrpBtIngresar.Visible = true;
+            GrpCrear10.Visible = true;
+            GrpIngresar10.Visible = true;
             GrpIngresar.Visible = false;
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Evaluacion.Back;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,22 +11,16 @@ using System.Windows.Forms;
 
 namespace Evaluacion.Font
 {
-    public partial class MDIHomebanking : Form
+    public partial class MDIParent1 : Form
     {
-        private int childFormNumber = 0;
+        //private int childFormNumber = 0;
 
-        public MDIHomebanking()
+        public MDIParent1()
         {
             InitializeComponent();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Ventana " + childFormNumber++;
-            childForm.Show();
-        }
+      
 
         private void OpenFile(object sender, EventArgs e)
         {
@@ -66,12 +61,11 @@ namespace Evaluacion.Font
         {
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
+  
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,7 +98,17 @@ namespace Evaluacion.Font
 
         private void crearUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Form1 newmdichild = new Form1(); //?????????????????????????????????????????????????????????????????????
+            FmCearUsuario childForm = new FmCearUsuario();
+            childForm.MdiParent = this;
+            childForm.Text = "Crear usuario" ;
+            childForm.Show();
+            if (childForm.Validacion2())
+            {
+                BtDepositar.Enabled = true;
+                BtRetirar.Enabled = true;
+                BtSaldo.Enabled = true;
+
+            }
         }
 
         

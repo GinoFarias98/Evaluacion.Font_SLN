@@ -16,7 +16,7 @@ namespace Evaluacion.Font
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1()); // se cambio el form1 por el mdi para que este sea el primero en ejecutarse luego de program.cs
+            Application.Run(new MDIParent1()); // se cambio el form1 por el mdi para que este sea el primero en ejecutarse luego de program.cs
         }
     }
 }
