@@ -102,7 +102,7 @@ namespace Evaluacion.Font
             childForm.MdiParent = this;
             childForm.Text = "Crear usuario" ;
             childForm.Show();
-            if (childForm.Validacion2())
+            if (childForm.Validacion2()==true)
             {
                 BtDepositar.Enabled = true;
                 BtRetirar.Enabled = true;

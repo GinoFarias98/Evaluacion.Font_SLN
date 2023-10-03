@@ -101,6 +101,13 @@ namespace Evaluacion.Font
                 {
                     this.Hide();
                 }
+                else
+                {
+                    errorProvider1.SetError(TxtClave, "Error credenciales");
+                    GrpIngresar.Width = 230;
+                    MessageBox.Show("Ha ocurrido un error. Posicione el cursor encima del icono de advertencia",
+                "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
